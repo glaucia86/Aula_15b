@@ -1,0 +1,103 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Cadastro</title>
+    <link type="text/css" rel="stylesheet" href="~/Content/bootstrap.css"/>
+    <script type="text/javascript" src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+</head>   
+<body>
+    <div class="container">
+        <div class="span10 offset1">
+            <div class="row">
+                <h3 class="well">Cadastro de Cliente</h3>
+                <br />
+
+                <!--Referenciar a Classe de Modelo utilizada por esta página-->
+                @model Site.Models.ClienteModel
+
+                <!--Criando um formulároi para cadastro de Clientes-->
+                @using (Html.BeginForm("CadastrarCliente", "Cliente", FormMethod.Post))
+                {
+                    <h4>@ViewBag.Mensagem</h4>
+
+                    <!--Exibir a validacao-->
+                    <div style="color: red">
+                        @Html.ValidationSummary()
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="nome" for="nome" class="control-label">@Html.LabelFor(m => m.Nome)</label><br/>
+                            @Html.TextBoxFor(m=> m.Nome, new { @class="form-control" } )
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="email" for="email" class="control-label">@Html.LabelFor(m => m.Email)</label><br/>
+                            @Html.TextBoxFor(m => m.Email, new { @class="form-control" } )
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="sexo" for="sexo" class="control-label">@Html.LabelFor(m => m.Sexo)</label> <br/>
+                            @Html.RadioButtonFor(m => m.Sexo, "M")<label class="control-label">Masculino</label><br />
+                            @Html.RadioButtonFor(m => m.Sexo, "F")<label class="control-label">Feminino</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="dataNascimento" for="dataNascimento" class="control-label">@Html.LabelFor(m => m.DataNascimento)</label><br/>
+                            @Html.TextBoxFor(m => m.DataNascimento, new { @type = "date", @class="form-control" } )
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="logradouro" for="logradouro" class="control-label">@Html.LabelFor(m => m.Logradouro)</label><br/>
+                            @Html.TextBoxFor(m => m.Logradouro, new {@class = "form-control"})
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="cidade" for="cidade" class="control-label">@Html.LabelFor(m => m.Cidade)</label><br/>
+                            @Html.TextBoxFor(m => m.Cidade, new {@class = "form-control"})
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="estado" for="estado" class="control-label">@Html.LabelFor(m => m.Estado)</label><br/>
+                            @Html.TextBoxFor(m => m.Estado, new {@class = "form-control"})
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label id="tipoResidencia" for="tipoResidencia" class="control-label">@Html.LabelFor(m => m.Tipo)</label><br/>
+                            @Html.RadioButtonFor(m => m.Tipo, "Residencial")<label class="control-label">Residencial</label><br/>
+                            @Html.RadioButtonFor(m => m.Tipo, "Comercial")<label class="control-label">Comercial</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <button type="submit" class="btn btn-primary" >Cadastrar</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
